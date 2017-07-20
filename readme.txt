@@ -5,6 +5,10 @@ About
 Easy RSA is a Python library for implementing simple RSA cryptosystems. This
 was written only for educational purposes; its security is not guaranteed.
 
+License
+---
+The contents of this repository are made available under the MIT License.
+
 Contents
 ---
 -PublicKeyException and PrivateKeyException: for if their respective
