@@ -13,24 +13,36 @@ Contents
 ---
 -PublicKeyException and PrivateKeyException: for if their respective
 calculations happen to fail.
+
 -is_prime(number): returns true or false for whether the given number is prime.
+
 -relatively_prime(a, b): returns true or false for whether the given numbers
 are relatively prime, having no common factors other than 1.
+
 -sieve(limit): yields primes up to but not including the given number. Must be
 iterated through to make use of; my_primes = [prime for prime in sieve(100)]
+
 -random_integer(a, b): returns a cryptographically secure random integer in the
 interval [a, b] inclusively.
+
 -random_prime(a, b, exclusions = [x, y, ...]): returns a cryptographically
-secure random prime in the interval [a, b] inclusively.
--formula(a, b, c): returns the value of a^b mod c. This is the format of RSA's
-encryption and decryption formulas m^e mod n and c^d mod n respectively.
+secure random prime in the interval [a, b] inclusively. Will not return a value
+included in the optional exclusions argument.
+
+-formula(a, b, c): returns a list of the values of a[x]^b mod c for every
+element of a. This is the format of RSA's encryption and decryption formulas
+m^e mod n and c^d mod n respectively.
+
 -totient(a, b): returns the value of (a - 1) * (b - 1) according to Euler's
 totient function.
+
 -generate_public(phi): generates a public key in the interval [3, phi), raising
 a PublicKeyException if it fails.
+
 -generate_private(e, phi): generates a private key given the values of the
 public key and ϕn using brute force. If the calculation reaches
 MAXIMUM_COEFFICIENT before succeeding, a PrivateKeyException is raised.
+
 -Cipher(message): Creates an RSA cryptosystem for a given plaintext.
 
 Use
