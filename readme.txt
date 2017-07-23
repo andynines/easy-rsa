@@ -47,7 +47,7 @@ MAXIMUM_COEFFICIENT before succeeding, a PrivateKeyException is raised.
 
 Use
 ---
->>> import easy_rsa
+>>> from easy_rsa import *
 >>> my_encryption = Cipher("Romeo Sierra Alfa") #creating a new encryption
 >>> my_encryption.m #the message's Unicode ordinals
 [82, 111, 109, 101, 111, 32, 83, 105, 101, 114, 114, 97, 32, 65, 108, 102, 97]
