@@ -9,45 +9,9 @@ License
 ---
 The contents of this repository are made available under the MIT License.
 
-Contents
+Import Use
 ---
--PublicKeyException and PrivateKeyException: for if their respective
-calculations happen to fail.
-
--is_prime(number): returns true or false for whether the given number is prime.
-
--relatively_prime(a, b): returns true or false for whether the given numbers
-are relatively prime, having no common factors other than 1.
-
--sieve(limit): yields primes up to but not including the given number. Must be
-iterated through to make use of; my_primes = [prime for prime in sieve(100)]
-
--random_integer(a, b): returns a cryptographically secure random integer in the
-interval [a, b] inclusively.
-
--random_prime(a, b, exclusions = [x, y, ...]): returns a cryptographically
-secure random prime in the interval [a, b] inclusively. Will not return a value
-included in the optional exclusions argument.
-
--formula(a, b, c): returns a list of the values of a[x]^b mod c for every
-element of a. This is the format of RSA's encryption and decryption formulas
-m^e mod n and c^d mod n respectively.
-
--totient(a, b): returns the value of (a - 1) * (b - 1) according to Euler's
-totient function.
-
--generate_public(phi): generates a public key in the interval [3, phi), raising
-a PublicKeyException if it fails.
-
--generate_private(e, phi): generates a private key given the values of the
-public key and ϕn using brute force. If the calculation reaches
-MAXIMUM_COEFFICIENT before succeeding, a PrivateKeyException is raised.
-
--Cipher(message): Creates an RSA cryptosystem for a given plaintext.
-
-Use
----
->>> from easy_rsa import *
+>>> import easy_rsa
 >>> my_encryption = Cipher("Romeo Sierra Alfa") #creating a new encryption
 >>> my_encryption.m #the message's Unicode ordinals
 [82, 111, 109, 101, 111, 32, 83, 105, 101, 114, 114, 97, 32, 65, 108, 102, 97]
@@ -60,3 +24,20 @@ interpreted as Unicode
 >>> "".join([chr(ordinal) for ordinal in formula(my_encryption.c,
 my_encryption.d, my_encryption.n)]) #decrypting the message
 'Romeo Sierra Alfa'
+
+Application Use
+---
+Easy RSA loaded successfully
+Provide a message for encryption or type /e to exit
+
+>Romeo Sierra Alfa
+Unicode ordinals (m) 82, 111, 109, 101, 111, 32, 83, 105, 101, 114, 114, 97,
+32, 65, 108, 102, 97
+First prime (p) 19
+Second prime (q) 37
+Modulus (n) 703
+Totient (phi(n)) 648
+Public key (e) 5
+Private key (d) 389
+Encrypted ordinals (c) 689, 555, 523, 233, 555, 242, 182, 364, 233, 95, 95,
+526, 242, 373, 90, 410, 526
