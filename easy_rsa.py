@@ -154,7 +154,7 @@ class Cipher(object):
                 self.d = generate_private(self.e, self.phi)
                 self.c = formula(self.m, self.e, self.n)
                 break
-            except:
+            except (PublicKeyException, PrivateKeyException):
                 continue
 
 #demo
