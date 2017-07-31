@@ -2,8 +2,9 @@ readme.txt
 
 About
 ---
-Easy RSA is a Python library for implementing simple RSA cryptosystems. This
-was written only for educational purposes; its security is not guaranteed.
+Easy RSA is a Python library and application for implementing simple RSA
+cryptosystems. It has been written only for educational purposes; its security
+is not guaranteed.
 
 License
 ---
