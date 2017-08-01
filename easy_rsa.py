@@ -170,22 +170,22 @@ def main():
     print("Provide a message for encryption or type {} to exit\n".format(EXIT_COMMAND))
     while True:
         message = input(">")
-        if message == EXIT_COMMAND:
+        if len(message) >= len(EXIT_COMMAND) and message[:len(EXIT_COMMAND) - 1] == EXIT_COMMAND:
             exit()
         try:
             encryption = Cipher(message)
         except MessageException:
             print("An error occurred\n")
             continue
-        for variable in ["Unicode ordinals (m) " + ", ".join([str(ordinal) for ordinal in encryption.m]),
-                         "First prime (p) " + str(encryption.p),
-                         "Second prime (q) " + str(encryption.q),
-                         "Modulus (n) " + str(encryption.n),
-                         "Totient (phi(n)) " + str(encryption.phi),
-                         "Public key (e) " + str(encryption.e),
-                         "Private key (d) " + str(encryption.d),
-                         "Encrypted ordinals (c) " + ", ".join([str(ordinal) for ordinal in encryption.c]) + "\n"]:
-            print(variable)
+        print("Unicode ordinals (m) " + ", ".join([str(ordinal) for ordinal in encryption.m]),
+              "First prime (p) " + str(encryption.p),
+              "Second prime (q) " + str(encryption.q),
+              "Modulus (n) " + str(encryption.n),
+              "Totient (phi(n)) " + str(encryption.phi),
+              "Public key (e) " + str(encryption.e),
+              "Private key (d) " + str(encryption.d),
+              "Encrypted ordinals (c) " + ", ".join([str(ordinal) for ordinal in encryption.c]) + "\n",
+              sep="\n")
 
 if __name__ == "__main__":
     main()
