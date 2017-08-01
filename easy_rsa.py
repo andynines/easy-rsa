@@ -146,6 +146,15 @@ class Cipher(object):
             try:
                 self.m = [ord(character) for character in list(str(m))]
                 largest_m = max(self.m)
+                """
+                The RSA algorithm works properly so long as the modulus n is
+                greater than any ordinal that makes up the message m. To ensure
+                this is always the case, the smallest possible modulus that
+                could be generated would be the product of the largest m
+                ordinal's square root if it is prime, and the next prime after
+                that number, since p and q must be two distinct primes. In this
+                way such an edge case is prevented entirely.
+                """
                 self.p = random_integer(ceil(sqrt(largest_m)), largest_m, prime=True)
                 self.q = random_integer(ceil(sqrt(largest_m)), largest_m, prime=True, exclusions=[self.p])
                 self.n = self.p * self.q
@@ -153,8 +162,9 @@ class Cipher(object):
                 self.e = generate_public(self.phi)
                 self.d = generate_private(self.e, self.phi)
                 self.c = formula(self.m, self.e, self.n)
+                assert self.m != self.c
                 break
-            except (PublicKeyException, PrivateKeyException):
+            except (PublicKeyException, PrivateKeyException, AssertionError):
                 continue
 
 #demo
@@ -162,16 +172,14 @@ def main():
     """
     An I/O loop that takes messages and encrypts them for the user.
     """
-    from sys import exit
-
     EXIT_COMMAND = "/e"
-    
+
     print("Easy RSA loaded successfully")
     print("Provide a message for encryption or type {} to exit\n".format(EXIT_COMMAND))
     while True:
         message = input(">")
-        if len(message) >= len(EXIT_COMMAND) and message[:len(EXIT_COMMAND) - 1] == EXIT_COMMAND:
-            exit()
+        if len(message) >= len(EXIT_COMMAND) and message[:len(EXIT_COMMAND)] == EXIT_COMMAND:
+            break
         try:
             encryption = Cipher(message)
         except MessageException:
