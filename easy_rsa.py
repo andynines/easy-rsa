@@ -84,7 +84,7 @@ def sieve(limit):
 def random_integer(minimum, maximum, prime=False, exclusions=[]):
     """
     Returns a cryptographically secure random integer in the interval [a, b).
-    If prime is set to True, the result wil be prime. The result will not be a
+    If prime is set to True, the result will be prime. The result will not be a
     value contained within the exclusions argument.
     """
     if prime:
