@@ -10,8 +10,7 @@ The contents of this repository are made available under the MIT License.
 	>>> my_encryption.m #the message's Unicode ordinals
 	[82, 111, 109, 101, 111, 32, 83, 105, 101, 114, 114, 97, 32, 65, 108, 102, 97]
 	>>> my_encryption.c #the message's encrypted ordinals
-	[4597, 6070, 9824, 3158, 6070, 2811, 7995, 2601, 3158, 9380, 9380, 10573, 2811,
-	3009, 5463, 991, 10573]
+	[4597, 6070, 9824, 3158, 6070, 2811, 7995, 2601, 3158, 9380, 9380, 10573, 2811, 3009, 5463, 991, 10573]
 	>>> "".join([chr(ordinal) for ordinal in my_encryption.c]) #the encryption interpreted as Unicode
 	'ᇵា♠ౖា\u0afbἻ\u0a29ౖ⒤⒤⥍\u0afbுᕗϟ⥍'
 	>>> "".join([chr(ordinal) for ordinal in formula(my_encryption.c, my_encryption.d, my_encryption.n)]) #decrypting the message
